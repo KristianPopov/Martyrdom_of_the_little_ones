@@ -74,6 +74,15 @@ int main(int argc,char* argv[]){
     "a = ?\n int orig = 0x" << hex << a <<
     ";\n int insert = 0x" << hex << b <<
     ";\n int a = orig "<< operator_generator() <<" (insert << "<< shift_generator(diff) << ")\n"<<endl;
+    
+    cout<<"exercise 2:\n"  
+    "AND = ?"<<endl	
+    <<"int orig = 0x" <<hex<<a<<";"<<endl
+    <<"int insert = 0x" <<hex<<b<<";"<<endl
+    <<"int a = orig " << operator_generator() <<" (insert" << operator_generator()<< shift_generator(diff) <<")\n"<<endl
+    <<"int b = orig " << operator_generator() <<" (insert" << operator_generator()<< shift_generator(diff) <<")\n"<<endl
+    <<"int AND = a & b"<<endl;
 
+       system("pause");
   return 0;
 }
