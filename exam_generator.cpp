@@ -51,6 +51,13 @@ char operator_generator(){
      }
 }
 
+int shift_generator(int diff){
+    int shift = 0;
+    shift = (rand()%4+1)*2;
+    if(diff>2) shift-=1;
+    return shift;
+}
+
 int main(){
 
   return 0;
