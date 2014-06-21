@@ -58,7 +58,22 @@ int shift_generator(int diff){
     return shift;
 }
 
-int main(){
+int main(int argc,char* argv[]){
+       srand(time(NULL));
+    int diff;
+    
+    if(argc>1) diff=atoi(argv[1]);
+    else diff=rand()%3+1;
+    
+    unsigned int a,b;
+    num_generator(diff,a,b);
+    
+    cout<<"the difficulty is:"<<diff<<endl<<endl;
+
+    cout<<"exercise 1:\n"
+    "a = ?\n int orig = 0x" << hex << a <<
+    ";\n int insert = 0x" << hex << b <<
+    ";\n int a = orig "<< operator_generator() <<" (insert << "<< shift_generator(diff) << ")\n"<<endl;
 
   return 0;
 }
