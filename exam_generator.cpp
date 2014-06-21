@@ -42,6 +42,14 @@ void num_generator(int diff,unsigned int &a){
        }
 }
 
+char operator_generator(){
+     char op = rand()%3;
+     switch(op){
+         case 0: return '&';
+         case 1: return '|';
+         case 2: return '^';
+     }
+}
 
 int main(){
 
