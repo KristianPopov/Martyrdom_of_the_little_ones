@@ -93,11 +93,10 @@ int main(int argc,char* argv[]){
     cout<<"exercise 3:\n"
     <<" a = ?\n long testValue ="<<hex<<c<<";"<<endl
     <<" int a =0;"<<endl
-    <<" if (testValue & (1<<"<< shift_generator(diff)<<"))"<<endl
+    <<" if (testValue "<< operator_generator() <<" (1<<"<< shift_generator(diff)<<"))"<<endl
     <<" {"<<endl
     <<" a = 1; \n }\n else\n { \n a = 2; \n }"<<endl;
     cout <<endl;
-
 
        system("pause");
   return 0;
