@@ -104,7 +104,13 @@ int main(int argc,char* argv[]){
     <<" int insert = 0x"<<hex<<b<<";"<<endl
     <<" int b = orig " <<operator_generator()<< "(insert << "<<shift_generator(diff)<<")"<<endl
     <<" int XOR  = a ^ b;"<<endl; 
-
+       
+    cout<<"exercise 5:\n"
+    <<" left = ?"<<endl	
+    <<" int i = 0x"<<hex<<a<<";"<<endl
+    <<" int left = 0x"<<hex<<a<<" "<< operator_generator() << " (1 << "<<shift_generator(diff)<<");"<<endl;
+    cout <<endl;
+    
        system("pause");
        
   return 0;
