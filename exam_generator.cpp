@@ -25,7 +25,7 @@ void num_generator(int diff,unsigned int &a,unsigned int &b){
 }
 
 void long_num_generator(int diff,unsigned long int &a){
-       srand(time(NULL));
+       //srand(time(NULL));
        a = 0;
        char temp = 0;
        if(diff<3){
@@ -73,6 +73,11 @@ int main(int argc,char* argv[]){
     
     unsigned int a,b;
     num_generator(diff,a,b);
+    
+    unsigned long int c, c1;
+    long_num_generator(diff,c);
+    long_num_generator(diff,c1);
+    
     
     cout<<"the difficulty is:"<<diff<<endl<<endl;
 
