@@ -24,7 +24,7 @@ void num_generator(int diff,unsigned int &a,unsigned int &b){
        }
 }
 
-void num_generator(int diff,unsigned int &a){
+void long_num_generator(int diff,unsigned long int &a){
        srand(time(NULL));
        a = 0;
        char temp = 0;
@@ -36,9 +36,15 @@ void num_generator(int diff,unsigned int &a){
           if(diff == 2) a+= rand()%15+1;
           else if(diff == 1) a+= temp;          
           a = a <<4;
+          if(diff == 2) a = a;
+          else if(diff == 1) a = temp;
+          a = a <<17;
+          if(diff == 2) a+= temp;
+          else if(diff == 1) a+= temp;          
+          a = a <<9;
        }
        else{
-          a = rand();
+          a = rand()%4294967295+268435456;
        }
 }
 
