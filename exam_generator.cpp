@@ -85,8 +85,8 @@ int main(int argc,char* argv[]){
     "AND = ?"<<endl	
     <<" int orig = 0x" <<hex<<a<<";"<<endl
     <<" int insert = 0x" <<hex<<b<<";"<<endl
-    <<" int a = orig " << operator_generator() <<" (insert" << operator_generator()<< shift_generator(diff) <<")"<<endl
-    <<" int b = orig " << operator_generator() <<" (insert" << operator_generator()<< shift_generator(diff) <<")"<<endl
+    <<" int a = orig " << operator_generator() <<" (insert <<" << shift_generator(diff) <<")"<<endl
+    <<" int b = orig " << operator_generator() <<" (insert <<" << "4" <<")"<<endl
     <<" int AND = a & b"<<endl;
     cout <<endl;
     
@@ -97,7 +97,15 @@ int main(int argc,char* argv[]){
     <<" {"<<endl
     <<" a = 1; \n }\n else\n { \n a = 2; \n }"<<endl;
     cout <<endl;
+    
+    cout<<"exercise 4:\n" 
+    <<" XOR = ?"<<endl 
+    <<" int orig  = 0x"<<hex<<a<<";"<<endl
+    <<" int insert = 0x"<<hex<<b<<";"<<endl
+    <<" int b = orig " <<operator_generator()<< "(insert << "<<shift_generator(diff)<<")"<<endl
+    <<" int XOR  = a ^ b;"<<endl; 
 
        system("pause");
+       
   return 0;
 }
