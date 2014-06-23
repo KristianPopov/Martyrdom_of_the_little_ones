@@ -111,6 +111,13 @@ int main(int argc,char* argv[]){
     <<" int left = 0x"<<hex<<a<<" "<< operator_generator() << " (1 << "<<shift_generator(diff)<<");"<<endl;
     cout <<endl;
     
+    cout<<"exercise 6:\n"
+    <<" result = ?"<<endl 
+    <<" long value1 = 0x"<<hex<<c<<";"<<endl
+    <<" long value2 = 0x"<<hex<<c1<<";"<<endl
+    <<" int result = (value1 << "<<shift_generator(diff)<<") "<< operator_generator() <<" (value2 >> " <<shift_generator(diff)<<")"<<endl;
+    cout <<endl;
+    
        system("pause");
        
   return 0;
