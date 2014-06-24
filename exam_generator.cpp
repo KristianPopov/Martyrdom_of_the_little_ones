@@ -64,7 +64,7 @@ int shift_generator(int diff){
     return shift;
 }
 
-void html_generator(int diff,string task[12]){
+void html_generator(int diff,string task[12],char* file_path){
      char* buff = (char*)malloc(sizeof(int));
      
      string tasks[12];
@@ -184,7 +184,7 @@ function Check_Test(){\n\
 </html>";
   	
    ofstream myfile;
-   myfile.open ("task.html");
+   myfile.open (file_path);
     myfile << doc;
    myfile.close();
 }
@@ -193,9 +193,17 @@ int main(int argc,char* argv[]){
     srand(time(NULL));
     int diff;
     char* buff = (char*)malloc(sizeof(long));
+    char* file_path;
     
-    if(argc>1) diff=atoi(argv[1]);
-    else diff=rand()%3+1;
+    if(argc>1){ 
+       diff=atoi(argv[1]);
+       if(argc>2) file_path=argv[2];
+       else file_path="test.html";
+    }
+    else{
+         diff=rand()%3+1;
+         file_path="test.html";
+    }
     
     unsigned int a,b;
     unsigned long c,c1;
@@ -205,7 +213,9 @@ int main(int argc,char* argv[]){
     
     string tasks[12];
     
-    cout<<"the difficulty is:"<<diff<<endl<<endl;
+    cout<<"The difficulty is:"<<diff<<endl<<endl;
+    
+    cout<<"Generating the test";
     for(char i=0;i<2;i++){
         tasks[i]="a = ?\n int orig = 0x";
         tasks[i]+=itoa(a,buff,16);
@@ -217,6 +227,7 @@ int main(int argc,char* argv[]){
         tasks[i]+=itoa(shift_generator(diff),buff,10);
         tasks[i]+=");\n";
     }
+    cout<<'.';
     
     for(char i=2;i<4;i++){
         tasks[i]="AND = ?\n int orig = 0x";
@@ -233,6 +244,7 @@ int main(int argc,char* argv[]){
         tasks[i]+=itoa(shift_generator(diff),buff,10);
         tasks[i]+=");\n int AND = a & b;\n";
     }
+    cout<<'.';
 
     for(char i=4;i<6;i++){
         tasks[i]="a = ?\n long testValue =0x";
@@ -243,6 +255,7 @@ int main(int argc,char* argv[]){
         tasks[i]+=itoa(shift_generator(diff),buff,10);
         tasks[i]+="))\n {\n    a = 1; \n }\n else\n { \n   a = 2; \n }\n";
     }
+    cout<<'.';
 
     for(char i=6;i<8;i++){
         tasks[i]=" XOR = ?\n int orig  = 0x";
@@ -255,6 +268,7 @@ int main(int argc,char* argv[]){
         tasks[i]+=itoa(shift_generator(diff),buff,10);
         tasks[i]+=");\n int XOR  = a ^ b;\n"; 
     }
+    cout<<'.';
    
     for(char i=8;i<10;i++){
         tasks[i]=" left = ?\n int i = 0x";
@@ -265,6 +279,7 @@ int main(int argc,char* argv[]){
         tasks[i]+=itoa(shift_generator(diff),buff,10);
         tasks[i]+=");\n";
     }
+    cout<<'.';
     
     for(char i=10;i<12;i++){
         tasks[i]=" result = ?\n long value1 = 0x";
@@ -279,9 +294,11 @@ int main(int argc,char* argv[]){
         tasks[i]+=itoa(shift_generator(diff),buff,10);
         tasks[i]+=");\n";
     }
-    
-    html_generator(diff,tasks);
-
+    cout<<'.'<<endl;
+    cout<<"Done."<<endl;
+    cout<<"Generating html file to " <<file_path<<" ..."<<endl;
+    html_generator(diff,tasks,file_path);
+    cout<<"Done.The test was generated succesfull!"<<endl;
     system("pause");
        
   return 0;
